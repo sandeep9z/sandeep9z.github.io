@@ -377,6 +377,36 @@ spec:
     <p class="sub-note">platform services, operators, tooling and reliability</p>
     <div class="grid">
       <article class="mini">
+        <span class="kicker">Migration</span>
+        <h4>Containerizing 150 microservices</h4>
+        <p>Moved 150 services onto containers in planned waves. Shared base images, Dockerfile standards and a common Helm chart gave every service the same build, scan and deploy path, with images stored in Artifactory and rolled out by ArgoCD.</p>
+        <ul class="techs"><li>Docker</li><li>Helm</li><li>Kubernetes</li><li>ArgoCD</li><li>Artifactory</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Resilience</span>
+        <h4>Disaster recovery build</h4>
+        <p>A multi-region recovery design with agreed RPO and RTO targets. A Terraform-built secondary region, data replication, DNS failover and written runbooks, proven by scheduled game days instead of assumed.</p>
+        <ul class="techs"><li>AWS</li><li>Terraform</li><li>Route 53</li><li>DynamoDB</li><li>Game days</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Release strategy</span>
+        <h4>Blue/green deployments</h4>
+        <p>Two identical environments with traffic shifted between them. Smoke tests run on the idle side before any user is moved, and rollback means switching traffic back. It plugs into the production stage of Compass.</p>
+        <ul class="techs"><li>Argo Rollouts</li><li>ALB</li><li>Helm</li><li>GitHub Actions</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Cloud platform</span>
+        <h4>Customer Platform on AWS</h4>
+        <p>A customer platform built cloud-native: APIs, event-driven services and data stores that move customer and reservation events between systems reliably, with retries, dead-letter queues, dashboards and alerts from day one.</p>
+        <ul class="techs"><li>ECS</li><li>Lambda</li><li>EventBridge</li><li>Step Functions</li><li>DynamoDB</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">MLOps</span>
+        <h4>Event-driven MLOps on Kafka</h4>
+        <p>Kafka topics feed feature pipelines and model-scoring consumers. CI/CD tests, validates and registers each model, then deploys it with a canary and watches for drift, so models ship with the same discipline as services.</p>
+        <ul class="techs"><li>Kafka</li><li>Python</li><li>MLflow</li><li>Kubernetes</li><li>GitHub Actions</li><li>ArgoCD</li></ul>
+      </article>
+      <article class="mini">
         <span class="kicker">Kubernetes operator</span>
         <h4>ServiceEnvironment operator</h4>
         <p>A Go controller with a custom resource that turns a short declaration into a ready environment: namespace, quotas, network policy, secrets access and an ArgoCD application. Status conditions show exactly what is pending. Tested with envtest and kind.</p>
