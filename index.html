@@ -132,6 +132,27 @@ section{padding-block:100px}
   .techs,.flip .techs{justify-content:flex-start}
 }
 
+/* backstage detail */
+.detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:28px;align-items:start;margin-bottom:100px}
+.detail pre{margin:0;background:#06111f;color:var(--slate-lt);border:1px solid var(--navy-3);border-radius:4px;padding:18px 20px;font:400 12.5px/1.65 var(--mono);overflow-x:auto;min-width:0}
+.detail .notes{display:grid;gap:14px;font-size:16px;color:var(--slate)}
+.detail .notes li{position:relative;padding-left:26px}
+.detail .notes li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+.detail .notes b{color:var(--slate-xl);font-weight:600}
+.detail .kicker{margin-bottom:16px}
+
+/* more projects */
+.sub{font-size:clamp(22px,4vw,28px);font-weight:700;color:var(--slate-xl);text-align:center;margin:0 0 8px}
+.sub-note{text-align:center;font:400 13px/1.5 var(--mono);color:var(--accent);margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}
+.mini{background:var(--navy-2);border-radius:4px;padding:26px 24px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:transform .2s}
+.mini:hover{transform:translateY(-5px)}
+.mini .kicker{color:var(--slate)}
+.mini h4{font-size:21px;font-weight:600;color:var(--slate-xl);line-height:1.3}
+.mini p{font-size:15.5px;color:var(--slate)}
+.mini .techs{justify-content:flex-start;margin-top:auto;padding-top:8px;font-size:12px}
+@media(prefers-reduced-motion:reduce){.mini{transition:none}.mini:hover{transform:none}}
+
 /* contact */
 .contact{max-width:600px;margin:0 auto;text-align:center;padding-block:100px 120px}
 .contact .kicker{display:block;margin-bottom:16px}
@@ -282,7 +303,7 @@ footer{text-align:center;padding:0 0 40px;font:400 12px/1.6 var(--mono);color:va
       </div>
     </article>
 
-    <article class="proj">
+    <article class="proj" style="margin-bottom:40px">
       <div class="vis">
         <div class="vis-t">BACKSTAGE · NEW SERVICE</div>
         <ol class="steps">
@@ -302,6 +323,96 @@ footer{text-align:center;padding:0 0 40px;font:400 12px/1.6 var(--mono);color:va
         <ul class="techs"><li>Backstage</li><li>Go operator</li><li>Terraform</li><li>Helm</li><li>ArgoCD</li><li>Artifactory</li></ul>
       </div>
     </article>
+
+    <div class="detail">
+      <pre aria-label="Example Backstage scaffolder template"><code># template.yaml (scaffolder, outline)
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: golden-path-service
+  title: New service (golden path)
+spec:
+  owner: platform-team
+  type: service
+  parameters:
+    - title: Service details
+      required: [name, owner, lane]
+      properties:
+        name:  { type: string }
+        owner: { type: string, ui:field: OwnerPicker }
+        lane:  { type: string, enum: [compass, express-lane] }
+  steps:
+    - id: scaffold
+      action: fetch:template
+      input: { url: ./skeleton, values: "${{ parameters }}" }
+    - id: repo
+      action: publish:github
+      input: { repoUrl: "github.com?owner=example-org&amp;repo=${{ parameters.name }}" }
+    - id: infra
+      action: platform:terraform-pr    # custom action
+      input: { service: "${{ parameters.name }}" }
+    - id: deploy
+      action: platform:argocd-app      # custom action
+      input: { service: "${{ parameters.name }}", env: dev }
+    - id: pipeline
+      action: platform:attach-lane     # compass or express-lane
+      input: { lane: "${{ parameters.lane }}" }
+    - id: register
+      action: catalog:register
+      input: { catalogInfoUrl: "${{ steps.repo.output.remoteUrl }}" }</code></pre>
+      <div>
+        <div class="kicker">What the engineer gets, with no tickets</div>
+        <ul class="notes">
+          <li><b>A repository</b> with branch protection, CODEOWNERS, secret scanning and a working CI pipeline.</li>
+          <li><b>Infrastructure</b> from reviewed Terraform modules, applied by the pipeline, with outputs published back to the catalog.</li>
+          <li><b>A running Dev deployment</b> through a Helm chart and an ArgoCD application, with the image stored in Artifactory.</li>
+          <li><b>The release lane they chose.</b> Compass for regular releases or Express Lane for no-op changes, already wired and green.</li>
+          <li><b>A catalog page</b> showing owner, docs, dashboards, pipeline runs and deployment health in one place.</li>
+          <li><b>Every step is a commit.</b> The scaffolder, Terraform and ArgoCD changes are all reviewable pull requests, so the result is auditable and repeatable.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">Other noteworthy projects</h3>
+    <p class="sub-note">platform services, operators, tooling and reliability</p>
+    <div class="grid">
+      <article class="mini">
+        <span class="kicker">Kubernetes operator</span>
+        <h4>ServiceEnvironment operator</h4>
+        <p>A Go controller with a custom resource that turns a short declaration into a ready environment: namespace, quotas, network policy, secrets access and an ArgoCD application. Status conditions show exactly what is pending. Tested with envtest and kind.</p>
+        <ul class="techs"><li>Go</li><li>controller-runtime</li><li>Kubernetes</li><li>ArgoCD</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Platform API</span>
+        <h4>Enterprise Insights service</h4>
+        <p>A backend service and reports built on the GitHub Enterprise and GitLab APIs. It inventories orgs and repositories, tracks runner and license usage, flags stale repos, and publishes scheduled reports for platform owners.</p>
+        <ul class="techs"><li>Go</li><li>Python</li><li>GitHub API</li><li>GitLab API</li><li>AWS</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Editor tooling</span>
+        <h4>Platform Copilot for VS Code</h4>
+        <p>A VS Code extension with an MCP server that lets GitHub Copilot answer questions from live platform data: the service catalog, pipeline status, package versions and runbooks. Engineers get answers without leaving the editor.</p>
+        <ul class="techs"><li>TypeScript</li><li>VS Code API</li><li>MCP</li><li>GitHub Copilot</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Supply-chain security</span>
+        <h4>Supply Chain Guard</h4>
+        <p>A reusable CI workflow that runs SAST and dependency scans, generates an SBOM, signs images, and promotes packages in Artifactory only when every check passes. Teams adopt it with one line in their pipeline.</p>
+        <ul class="techs"><li>GitLab CI</li><li>GitHub Actions</li><li>SAST</li><li>SBOM</li><li>Artifactory</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Infrastructure as code</span>
+        <h4>Terraform module library</h4>
+        <p>Versioned, tested Terraform modules for networking, clusters and service infrastructure. Pull requests run formatting, validation, policy checks and plan review, and Backstage templates consume the same modules.</p>
+        <ul class="techs"><li>Terraform</li><li>AWS</li><li>Terratest</li><li>Policy as code</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Reliability</span>
+        <h4>Platform SLOs and on-call</h4>
+        <p>Service level objectives for platform APIs, with OpenTelemetry traces, alerts tied to error budgets, runbooks linked from the catalog, and blameless incident reviews that feed back into the backlog.</p>
+        <ul class="techs"><li>OpenTelemetry</li><li>Prometheus</li><li>Grafana</li><li>Incident response</li></ul>
+      </article>
+    </div>
   </section>
 
   <section class="contact" id="contact">
