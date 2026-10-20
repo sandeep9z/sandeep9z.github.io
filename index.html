@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Sandeep Vattikuti, platform engineer: GitHub Enterprise, Kubernetes, Terraform and CI/CD orchestration.">
+<meta name="description" content="Sandeep Vattikuti, Staff DevOps Engineer and SRE: Kubernetes platforms, CI/CD, Terraform and developer experience.">
 <title>Sandeep Vattikuti</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,6 +153,23 @@ section{padding-block:100px}
 .mini .techs{justify-content:flex-start;margin-top:auto;padding-top:8px;font-size:12px}
 @media(prefers-reduced-motion:reduce){.mini{transition:none}.mini:hover{transform:none}}
 
+/* resume sections */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px 20px;margin-top:28px}
+.fact b{display:block;font:600 22px/1.1 var(--sans);color:var(--slate-xl)}
+.fact span{font:400 12px/1.4 var(--mono);color:var(--accent)}
+.panel li b{color:var(--slate-xl);font-weight:600}
+.panel .range{line-height:1.5}
+.skillgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:30px 40px}
+.sg h3{font-size:16px;font-weight:600;color:var(--slate-xl);margin-bottom:12px}
+.sg ul{display:flex;flex-wrap:wrap;gap:8px}
+.sg li{font:400 12.5px/1 var(--mono);color:var(--slate-lt);background:var(--navy-2);border-radius:3px;padding:8px 10px}
+.cred{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px}
+.cred h3{font-size:20px;font-weight:600;color:var(--slate-xl);margin-bottom:16px}
+.cred li{position:relative;padding-left:26px;margin-bottom:12px;font-size:16.5px}
+.cred li::before{content:"\25b9";position:absolute;left:0;color:var(--accent)}
+.cred li b{color:var(--slate-xl);font-weight:600}
+.cred li span{display:block;font:400 12.5px/1.5 var(--mono);color:var(--slate)}
+
 /* contact */
 .contact{max-width:600px;margin:0 auto;text-align:center;padding-block:100px 120px}
 .contact .kicker{display:block;margin-bottom:16px}
@@ -171,8 +188,10 @@ footer{text-align:center;padding:0 0 40px;font:400 12px/1.6 var(--mono);color:va
     <a class="logo" href="#top" aria-label="Home">SV</a>
     <ol>
       <li><a href="#about">About</a></li>
-      <li><a href="#work">Focus</a></li>
+      <li><a href="#work">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#credentials">Credentials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ol>
   </div>
@@ -180,7 +199,7 @@ footer{text-align:center;padding:0 0 40px;font:400 12px/1.6 var(--mono);color:va
 
 <div class="rail rail-l" aria-label="Social"><ul>
   <li><a href="https://github.com/sandeep9z" rel="noopener" aria-label="GitHub">GH</a></li>
-  <li><a href="https://www.linkedin.com/" rel="noopener" aria-label="LinkedIn">in</a></li>
+  <li><a href="https://www.linkedin.com/in/sandeepvattikuti" rel="noopener" aria-label="LinkedIn">in</a></li>
 </ul></div>
 
 <div class="main wrapper" id="top">
@@ -189,70 +208,98 @@ footer{text-align:center;padding:0 0 40px;font:400 12px/1.6 var(--mono);color:va
     <p class="hi">Hi, my name is</p>
     <h1>Sandeep Vattikuti.</h1>
     <h2>I build release platforms.</h2>
-    <p>I'm a platform engineer who designs the automation, services and self-service tooling that take code from a pull request to production. Right now I'm focused on <b>GitHub Enterprise</b>, <b>Kubernetes</b> and <b>CI/CD orchestration</b> with change control built in.</p>
-    <div><a class="btn" href="#projects">See the projects</a></div>
+    <p>Staff DevOps Engineer and SRE with 10+ years building developer platforms, enterprise CI/CD and cloud-native infrastructure. I work on <b>Kubernetes operators</b>, <b>GitOps</b>, <b>Terraform</b> and <b>Backstage</b>, with change control built in.</p>
+    <div><a class="btn" href="#work">See my experience</a></div>
   </section>
 
   <section id="about">
     <h2 class="h">About me</h2>
     <div class="about">
       <div>
-        <p>I like platforms that engineers choose to use. That means a clear path from idea to production, tooling that explains itself, and automation that handles the repetitive parts so people can focus on the product.</p>
-        <p>My day-to-day covers <b>AWS</b> workloads, <b>Terraform</b> modules, <b>Docker</b> and <b>Kubernetes</b> delivery with <b>Helm</b> and <b>ArgoCD</b>, and backend services in <b>Go</b> and <b>Python</b>. I connect these through <b>GitHub Actions</b>, <b>GitLab</b>, <b>Artifactory</b> and <b>Backstage</b>.</p>
-        <p>I also write the guidance, review designs, and help teams adopt what we build.</p>
-        <p style="margin-top:22px">Technologies I use regularly:</p>
-        <ul class="skills">
-          <li>Go</li><li>Python</li><li>AWS</li><li>Terraform</li><li>Kubernetes</li><li>Helm</li><li>ArgoCD</li><li>GitHub Actions</li><li>Backstage</li><li>Artifactory</li>
-        </ul>
+        <p>I'm a Staff DevOps Engineer and Site Reliability Engineering lead who builds the platforms engineers rely on. Over 10+ years I've designed developer portals, enterprise CI/CD ecosystems and cloud-native infrastructure for large engineering organizations.</p>
+        <p>My depth is in <b>Kubernetes platform services</b>, custom <b>operators and controllers</b>, <b>GitOps</b> with ArgoCD and Helm, and <b>Terraform</b>. I've run enterprise CI/CD at scale, including <b>CloudBees CI</b>, <b>GitLab CI/CD</b> and <b>Artifactory</b>, and written shared pipeline libraries and self-service automation used by 100+ engineering teams.</p>
+        <p>I write <b>Go</b> and <b>Python</b>, build internal developer portals on <b>Backstage</b>, secure the software supply chain with SAST and DAST, and keep services available through observability and incident response.</p>
+        <div class="facts">
+          <div class="fact"><b>10+ years</b><span>platform and SRE</span></div>
+          <div class="fact"><b>99.99%</b><span>availability on EKS</span></div>
+          <div class="fact"><b>~300,000</b><span>active users served</span></div>
+          <div class="fact"><b>100+</b><span>teams on shared tooling</span></div>
+        </div>
       </div>
       <div class="portrait" aria-hidden="true"><span>SV</span></div>
     </div>
   </section>
 
   <section id="work">
-    <h2 class="h">What I work on</h2>
+    <h2 class="h">Where I've worked</h2>
     <div class="jobs">
-      <div class="tablist" role="tablist" aria-label="Focus areas">
-        <button class="tab" role="tab" id="t0" aria-controls="p0" aria-selected="true" tabindex="0">Source control</button>
-        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1">Delivery</button>
-        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Cloud</button>
-        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">Developer tools</button>
+      <div class="tablist" role="tablist" aria-label="Employers">
+        <button class="tab" role="tab" id="t0" aria-controls="p0" aria-selected="true" tabindex="0">Platform client</button>
+        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1">Texas HHSC</button>
+        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">TriNet</button>
+        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">Bank of America</button>
+        <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1">IHG</button>
+        <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1">USAA</button>
       </div>
       <div style="flex:1;min-width:0">
         <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0">
-          <h3>GitHub and GitLab Enterprise <span>@ platform</span></h3>
-          <p class="range">Administration · Automation · Reporting</p>
+          <h3>Staff DevOps Engineer (Consulting) <span>@ Engineering Platform Client</span></h3>
+          <p class="range">Aug 2026 – Present · Remote · On-call rota</p>
           <ul>
-            <li>Keep enterprise source control reliable: upgrades, runner capacity, access policy, backup and monitoring.</li>
-            <li>Build internal apps and CLIs on the GitHub and GitLab APIs for org management and enterprise reporting.</li>
-            <li>Give engineers fast, direct support and clear written guidance.</li>
+            <li><b>Self-service platform and operators.</b> Architect and operate platform services in Go and Python, with custom Kubernetes operators and controllers that provision development sandboxes and isolated test namespaces on demand.</li>
+            <li><b>GitOps delivery.</b> Run declarative workflows with ArgoCD and Helm on EKS for multi-tenant workloads, with canary deployments, progressive rollouts and instant rollback.</li>
+            <li><b>Terraform on AWS.</b> Author modular Terraform for multi-account infrastructure, with state locking, least-privilege IAM and automated environment promotion.</li>
+            <li><b>Developer experience.</b> Integrated Backstage with Artifactory, GitLab APIs and secret managers, cutting developer onboarding and environment lead time by 60%.</li>
+            <li><b>Production support and SRE.</b> Join the 24/7 paid on-call rota and use OpenTelemetry, Prometheus and Grafana to track p99 latency, runtime health and SLIs/SLOs.</li>
+            <li><b>Supply-chain security.</b> Added SAST/DAST scanners and Trivy image gating to deployment stages so insecure artifacts never reach production.</li>
           </ul>
         </div>
         <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
-          <h3>CI/CD orchestration <span>@ delivery</span></h3>
-          <p class="range">GitHub Actions · ArgoCD · Helm</p>
+          <h3>Principal DevOps Architect and Infrastructure Lead <span>@ Texas Health and Human Services (HHSC)</span></h3>
+          <p class="range">Apr 2025 – Aug 2026</p>
           <ul>
-            <li>Design release pipelines with approval gates, change records and scheduled production windows.</li>
-            <li>Promote one immutable artifact through every environment so what was tested is what ships.</li>
-            <li>Deploy with GitOps using Helm charts and ArgoCD applications.</li>
+            <li><b>Platform strategy and architecture.</b> Technical lead for multi-tenant cloud platform infrastructure on AWS and Azure, setting standards for resilience and automation.</li>
+            <li><b>High-availability compute.</b> Operated and hardened clustered compute and distributed databases, resolving system contention, tuning memory and keeping statutory services up.</li>
+            <li><b>Infrastructure as code and CI/CD.</b> Wrote modular Terraform and GitHub Actions release pipelines for zero-downtime cutovers and fully reproducible dev, staging and production.</li>
+            <li><b>Architecture review.</b> Chaired weekly review boards, authored technical design documents and defined API standards tied to business outcomes.</li>
+            <li><b>Governance and security.</b> Enforced HIPAA and NIST baselines with dynamic data masking, role-based access control and immutable audit logging.</li>
           </ul>
         </div>
         <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
-          <h3>Cloud and infrastructure <span>@ AWS</span></h3>
-          <p class="range">Terraform · Kubernetes · Operators</p>
+          <h3>Principal DevOps and Platform Engineer <span>@ TriNet</span></h3>
+          <p class="range">Nov 2018 – Apr 2025</p>
           <ul>
-            <li>Run production workloads on AWS with ECS, Lambda, EventBridge, Step Functions and DynamoDB.</li>
-            <li>Manage infrastructure with reusable Terraform modules and plan review in pull requests.</li>
-            <li>Build Kubernetes operators that turn a declared environment into real resources.</li>
+            <li><b>CloudBees CI administration.</b> Ran the enterprise CloudBees CI (Jenkins Enterprise) cluster for 200+ microservices and 15+ product teams, with shared Groovy pipeline libraries, controller autoscaling and tuned build queues.</li>
+            <li><b>Kubernetes at scale.</b> Operated multi-cluster EKS serving about 16,000 corporate clients and 300,000 active users at 99.99% availability, including node autoscaling, upgrades and ingress.</li>
+            <li><b>AI-augmented tooling.</b> Built internal CLI agents in Python and LangChain that validate infrastructure and pipeline code against security benchmarks before commit, cutting review cycles by 60%.</li>
+            <li><b>Reusable infrastructure libraries.</b> Published versioned AWS CDK construct libraries in Python and TypeScript for RDS PostgreSQL, DynamoDB, S3 and streaming, under strict IAM guardrails.</li>
+            <li><b>Incident response.</b> Primary technical anchor on escalation rotas during open enrollment, resolving deadlocks, network timeouts and throttling under 5x traffic.</li>
+            <li><b>Mentorship.</b> Coached senior and mid-level engineers on pipeline code, container lifecycle and blameless postmortems.</li>
           </ul>
         </div>
         <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
-          <h3>Developer experience <span>@ tooling</span></h3>
-          <p class="range">Backstage · VS Code · MCP</p>
+          <h3>Senior DevOps and Cloud Infrastructure Engineer <span>@ Bank of America</span></h3>
+          <p class="range">Feb 2016 – Nov 2018</p>
           <ul>
-            <li>Run a Backstage catalog and templates so a new service starts from a golden path.</li>
-            <li>Build VS Code extensions that bring internal tools into the editor, with MCP servers for GitHub Copilot.</li>
-            <li>Integrate Artifactory so packages and images are stored once and traceable.</li>
+            <li><b>CI/CD automation.</b> Built build, test and release pipelines with Jenkins, Docker and Artifactory, standardizing artifact promotion across secure VPC tiers.</li>
+            <li><b>Streaming infrastructure.</b> Automated Apache Kafka provisioning and cluster setup with Terraform and Ansible, with Avro schema registry governance and highly available brokers.</li>
+            <li><b>Linux hardening.</b> Kept enterprise Linux systems compliant with financial security baselines using shell automation for access control and audit logging.</li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+          <h3>DevOps and Systems Integration Engineer <span>@ IHG (InterContinental Hotels Group)</span></h3>
+          <p class="range">Jun 2014 – Feb 2016</p>
+          <ul>
+            <li><b>Configuration management.</b> Used Ansible across distributed Linux environments to standardize application configuration, middleware deployment and OS patching.</li>
+            <li><b>Deployment and integration.</b> Ran automated build and release cycles for hotel reservation systems, integrating REST APIs and partner connections.</li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+          <h3>Release and Build Engineer <span>@ USAA</span></h3>
+          <p class="range">Aug 2011 – Jun 2014</p>
+          <ul>
+            <li><b>Release management.</b> Coordinated build, package and release promotion across dev, QA and production.</li>
+            <li><b>Automation and scripting.</b> Wrote shell scripts and Puppet and Ansible automation to streamline database DDL/DML deployments and environment cutovers.</li>
           </ul>
         </div>
       </div>
@@ -408,9 +455,21 @@ spec:
       </article>
       <article class="mini">
         <span class="kicker">Kubernetes operator</span>
-        <h4>ServiceEnvironment operator</h4>
-        <p>A Go controller with a custom resource that turns a short declaration into a ready environment: namespace, quotas, network policy, secrets access and an ArgoCD application. Status conditions show exactly what is pending. Tested with envtest and kind.</p>
-        <ul class="techs"><li>Go</li><li>controller-runtime</li><li>Kubernetes</li><li>ArgoCD</li></ul>
+        <h4>k8s-sandbox-operator</h4>
+        <p>A Go operator built with the Operator SDK for self-service, ephemeral engineering sandboxes on AWS EKS. It adds resource quotas, automatic TTL teardown and Backstage portal integration.</p>
+        <ul class="techs"><li>Go</li><li>Operator SDK</li><li>EKS</li><li>Backstage</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">CI/CD library</span>
+        <h4>cloudbees-shared-library-pipeline</h4>
+        <p>A shared Groovy pipeline library for CloudBees CI and Jenkins. It standardizes Docker builds, multi-stage tests, Artifactory publishing, asynchronous SAST scanning and ArgoCD sync triggers across 100+ microservices.</p>
+        <ul class="techs"><li>Groovy</li><li>CloudBees CI</li><li>Artifactory</li><li>ArgoCD</li><li>SAST</li></ul>
+      </article>
+      <article class="mini">
+        <span class="kicker">Open source</span>
+        <h4><a href="https://github.com/sandeep9z/rag-ops-toolkit" rel="noopener">rag-ops-toolkit</a></h4>
+        <p>A production RAG framework for semantic search across infrastructure definitions and operational runbooks, built with FastAPI, LangChain and Chroma or Pinecone.</p>
+        <ul class="techs"><li>Python</li><li>FastAPI</li><li>LangChain</li><li>Chroma</li><li>Pinecone</li></ul>
       </article>
       <article class="mini">
         <span class="kicker">Platform API</span>
@@ -445,11 +504,48 @@ spec:
     </div>
   </section>
 
+  <section id="skills">
+    <h2 class="h">Technical expertise</h2>
+    <div class="skillgroups">
+      <div class="sg"><h3>Platform engineering</h3><ul><li>Self-service platforms</li><li>Backstage</li><li>Kubernetes operators</li><li>Kubebuilder</li><li>Operator SDK</li><li>Developer experience</li><li>REST and gRPC APIs</li><li>Artifactory</li></ul></div>
+      <div class="sg"><h3>CI/CD and release</h3><ul><li>CloudBees CI</li><li>Jenkins Enterprise</li><li>Shared Groovy libraries</li><li>GitLab CI/CD</li><li>GitHub Actions</li><li>ArgoCD</li><li>FluxCD</li></ul></div>
+      <div class="sg"><h3>Containers and orchestration</h3><ul><li>Kubernetes (CKA)</li><li>EKS</li><li>GKE</li><li>Docker</li><li>containerd</li><li>Helm</li><li>Istio</li><li>etcd tuning</li><li>Linux</li></ul></div>
+      <div class="sg"><h3>Infrastructure as code</h3><ul><li>Terraform</li><li>AWS CDK</li><li>Ansible</li><li>Packer</li><li>CloudFormation</li></ul></div>
+      <div class="sg"><h3>Cloud</h3><ul><li>AWS: EKS, EC2, S3, IAM</li><li>EventBridge</li><li>Lambda</li><li>RDS</li><li>VPC</li><li>GCP: GKE, Pub/Sub</li><li>Cloud Storage</li></ul></div>
+      <div class="sg"><h3>Observability and SRE</h3><ul><li>Prometheus</li><li>Grafana</li><li>OpenTelemetry</li><li>Datadog</li><li>ELK and OpenSearch</li><li>CloudWatch</li><li>SLO and SLI design</li><li>Chaos engineering</li><li>On-call</li><li>Blameless postmortems</li></ul></div>
+      <div class="sg"><h3>Security and supply chain</h3><ul><li>SAST and DAST</li><li>Trivy</li><li>Clair</li><li>Vault</li><li>AWS Secrets Manager</li><li>Least-privilege IAM</li></ul></div>
+      <div class="sg"><h3>Languages</h3><ul><li>Go</li><li>Python</li><li>Groovy</li><li>Bash</li><li>SQL</li><li>Git</li></ul></div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <h2 class="h">Credentials</h2>
+    <div class="cred">
+      <div>
+        <h3>Certifications</h3>
+        <ul>
+          <li><b>Certified Kubernetes Administrator</b> <span>CKA</span></li>
+          <li><b>AWS Certified DevOps Engineer</b> <span>Professional</span></li>
+          <li><b>AWS Certified Solutions Architect</b> <span>Associate</span></li>
+          <li><b>Microsoft Certified: Fabric Analytics Engineer</b> <span>Associate</span></li>
+          <li><b>Professional Scrum Master I</b> <span>PSM I</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Education</h3>
+        <ul>
+          <li><b>M.S., Software Engineering</b> <span>Birla Institute of Technology and Science (BITS), Pilani</span></li>
+          <li><b>B.Tech, Electronics and Communication Engineering</b> <span>Jawaharlal Nehru Technological University (JNTU)</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="contact" id="contact">
     <span class="kicker">What's next?</span>
     <h2>Get in touch</h2>
     <p>I'm happy to walk through any of these designs, talk about platform engineering, or hear about what your team is building.</p>
-    <a class="btn" href="https://www.linkedin.com/" rel="noopener">Connect on LinkedIn</a>
+    <a class="btn" href="https://www.linkedin.com/in/sandeepvattikuti" rel="noopener">Connect on LinkedIn</a>
   </section>
 
   <footer>Designed and built by Sandeep Vattikuti</footer>
