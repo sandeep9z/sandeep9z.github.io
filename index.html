@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Sandeep Vattikuti, Staff DevOps Engineer and SRE: Kubernetes platforms, CI/CD, Terraform and developer experience.">
+<meta name="description" content="Sandeep Vattikuti, Staff DevOps Engineer and SRE: Kubernetes platforms, GitOps, Terraform and developer experience.">
 <title>Sandeep Vattikuti</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -208,7 +208,7 @@ footer{text-align:center;padding:0 0 40px;font:400 12px/1.6 var(--mono);color:va
     <p class="hi">Hi, my name is</p>
     <h1>Sandeep Vattikuti.</h1>
     <h2>I build release platforms.</h2>
-    <p>Staff DevOps Engineer and SRE with 10+ years building developer platforms, enterprise CI/CD and cloud-native infrastructure. I work on <b>Kubernetes operators</b>, <b>GitOps</b>, <b>Terraform</b> and <b>Backstage</b>, with change control built in.</p>
+    <p>Staff DevOps Engineer and SRE with 10+ years building developer platforms, enterprise CI/CD and cloud-native infrastructure. I work on <b>GitOps</b> with <b>Argo CD</b> and <b>GitHub Actions</b>, <b>Terraform</b> and <b>AWS CDK</b>, and infrastructure for AI and data workloads, with change control and compliance built in.</p>
     <div><a class="btn" href="#work">See my experience</a></div>
   </section>
 
@@ -218,6 +218,7 @@ footer{text-align:center;padding:0 0 40px;font:400 12px/1.6 var(--mono);color:va
       <div>
         <p>I'm a Staff DevOps Engineer and Site Reliability Engineering lead who builds the platforms engineers rely on. Over 10+ years I've designed developer portals, enterprise CI/CD ecosystems and cloud-native infrastructure for large engineering organizations.</p>
         <p>My depth is in <b>Kubernetes platform services</b>, custom <b>operators and controllers</b>, <b>GitOps</b> with ArgoCD and Helm, and <b>Terraform</b>. I've run enterprise CI/CD at scale, including <b>CloudBees CI</b>, <b>GitLab CI/CD</b> and <b>Artifactory</b>, and written shared pipeline libraries and self-service automation used by 100+ engineering teams.</p>
+        <p>I mentor engineers, chair architecture reviews, and work with InfoSec on compliant, auditable delivery.</p>
         <p>I write <b>Go</b> and <b>Python</b>, build internal developer portals on <b>Backstage</b>, secure the software supply chain with SAST and DAST, and keep services available through observability and incident response.</p>
         <div class="facts">
           <div class="fact"><b>10+ years</b><span>platform and SRE</span></div>
@@ -308,6 +309,90 @@ footer{text-align:center;padding:0 0 40px;font:400 12px/1.6 var(--mono);color:va
 
   <section id="projects">
     <h2 class="h">Some things I've built</h2>
+
+    <article class="proj">
+      <div class="vis">
+        <div class="vis-t">CI/CD MODERNIZATION · GITHUB ACTIONS + ARGO CD</div>
+        <ol class="steps">
+          <li><div><b>Inventory legacy pipelines</b><br><span class="mono">jobs mapped by language, target and risk</span></div></li>
+          <li><div><b>Reusable workflows</b><br><span class="mono">one build, test, scan, publish definition for every repo</span></div></li>
+          <li><div><b>Image build and scan</b><br><span class="mono">Docker build, Trivy scan, sign, push</span></div></li>
+          <li><div><b>Manifest pull request</b><br><span class="mono">new image tag committed to the GitOps repo</span></div></li>
+          <li class="gate"><div><b>Argo CD sync</b><br><span class="mono">reviewed change syncs, progressive rollout</span></div></li>
+          <li><div><b>Observe and roll back</b><br><span class="mono">Grafana alerts, revert the commit to undo</span></div></li>
+        </ol>
+        <div class="keyl"><span><i></i>automated</span><span><i class="g"></i>gate</span></div>
+      </div>
+      <div class="info">
+        <div class="kicker">Featured project</div>
+        <h3>CI/CD modernization on GitHub Actions</h3>
+        <div class="card">Moves delivery from legacy build systems to GitOps. Reusable GitHub Actions workflows build, test, scan and publish. Argo CD deploys declaratively from Git, so every change is reviewed, auditable and reversible.</div>
+        <ul class="techs"><li>GitHub Actions</li><li>Argo CD</li><li>Helm</li><li>EKS</li><li>Docker</li><li>Trivy</li></ul>
+      </div>
+    </article>
+
+    <article class="proj flip">
+      <div class="vis">
+        <div class="vis-t">AI-READY INFRASTRUCTURE · TERRAFORM + CDK</div>
+        <ol class="steps">
+          <li><div><b>Module catalog</b><br><span class="mono">Terraform modules and AWS CDK constructs</span></div></li>
+          <li><div><b>Isolated team workspaces</b><br><span class="mono">separate accounts, least-privilege IAM</span></div></li>
+          <li><div><b>EKS ML node pools</b><br><span class="mono">GPU and Spot pools with autoscaling</span></div></li>
+          <li><div><b>Data layer</b><br><span class="mono">S3 and Iceberg tables with a Glue catalog</span></div></li>
+          <li><div><b>Secrets</b><br><span class="mono">HashiCorp Vault, short-lived credentials</span></div></li>
+          <li class="gate"><div><b>Plan, review, apply</b><br><span class="mono">pull request review, GitHub Actions applies over OIDC</span></div></li>
+        </ol>
+        <div class="keyl"><span><i></i>automated</span><span><i class="g"></i>gate</span></div>
+      </div>
+      <div class="info">
+        <div class="kicker">Featured project</div>
+        <h3>AI-ready AWS infrastructure</h3>
+        <div class="card">Secure, repeatable infrastructure for machine learning and data workloads. Terraform and AWS CDK provision isolated environments, GPU capacity and storage, with Vault for secrets and every change reviewed in a pull request.</div>
+        <ul class="techs"><li>Terraform</li><li>AWS CDK</li><li>EKS</li><li>Vault</li><li>S3</li><li>Iceberg</li><li>GitHub Actions</li></ul>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="vis">
+        <div class="vis-t">STREAMING DATA · MSK + ICEBERG</div>
+        <ol class="steps">
+          <li><div><b>Producers to MSK topics</b><br><span class="mono">Avro schemas, governed topic naming</span></div></li>
+          <li><div><b>MSK Connect</b><br><span class="mono">managed sink connectors, no custom consumers</span></div></li>
+          <li><div><b>Iceberg tables</b><br><span class="mono">S3 storage, Glue catalog, schema evolution</span></div></li>
+          <li><div><b>Query layer</b><br><span class="mono">Athena for analysts and feature jobs</span></div></li>
+          <li class="gate"><div><b>Connector CI/CD</b><br><span class="mono">config tested, then deployed by GitHub Actions</span></div></li>
+          <li><div><b>Monitor</b><br><span class="mono">consumer lag and throughput in Grafana</span></div></li>
+        </ol>
+        <div class="keyl"><span><i></i>automated</span><span><i class="g"></i>gate</span></div>
+      </div>
+      <div class="info">
+        <div class="kicker">Featured project</div>
+        <h3>Event-driven data pipelines on MSK</h3>
+        <div class="card">A pipeline from Kafka topics to Iceberg tables using MSK and MSK Connect. Connector configuration lives in Git, is tested in CI and deployed by GitHub Actions, with lag and throughput dashboards in Grafana.</div>
+        <ul class="techs"><li>Amazon MSK</li><li>MSK Connect</li><li>Iceberg</li><li>Glue</li><li>Athena</li><li>GitHub Actions</li><li>Grafana</li></ul>
+      </div>
+    </article>
+
+    <article class="proj flip">
+      <div class="vis">
+        <div class="vis-t">COMPLIANCE + RESILIENCE · FEDRAMP-ALIGNED</div>
+        <ol class="steps">
+          <li><div><b>Control mapping</b><br><span class="mono">NIST controls tied to pipeline and infra checks</span></div></li>
+          <li class="gate"><div><b>Policy as code</b><br><span class="mono">guardrails block non-compliant Terraform</span></div></li>
+          <li><div><b>Audit logging</b><br><span class="mono">centralized and immutable</span></div></li>
+          <li><div><b>Access and secrets</b><br><span class="mono">Vault, least-privilege IAM, RBAC</span></div></li>
+          <li><div><b>DR build</b><br><span class="mono">RPO and RTO targets, secondary region from Terraform</span></div></li>
+          <li class="gate"><div><b>Game days</b><br><span class="mono">failover tested on a schedule, reviewed with InfoSec</span></div></li>
+        </ol>
+        <div class="keyl"><span><i></i>automated</span><span><i class="g"></i>gate</span></div>
+      </div>
+      <div class="info">
+        <div class="kicker">Featured project</div>
+        <h3>Compliance and disaster recovery by design</h3>
+        <div class="card">Compliance built into delivery instead of added at audit time. Controls are checked in the pipeline, evidence is logged automatically, and recovery is proven with scheduled game days planned with InfoSec.</div>
+        <ul class="techs"><li>Terraform</li><li>Vault</li><li>AWS</li><li>NIST</li><li>Policy as code</li><li>Route 53</li></ul>
+      </div>
+    </article>
 
     <article class="proj">
       <div class="vis">
@@ -474,8 +559,8 @@ spec:
       <article class="mini">
         <span class="kicker">Platform API</span>
         <h4>Enterprise Insights service</h4>
-        <p>A backend service and reports built on the GitHub Enterprise and GitLab APIs. It inventories orgs and repositories, tracks runner and license usage, flags stale repos, and publishes scheduled reports for platform owners.</p>
-        <ul class="techs"><li>Go</li><li>Python</li><li>GitHub API</li><li>GitLab API</li><li>AWS</li></ul>
+        <p>A backend service and reports built on the GitHub Enterprise APIs. It inventories orgs and repositories, tracks runner and license usage, flags stale repos, and publishes scheduled reports for platform owners.</p>
+        <ul class="techs"><li>Go</li><li>Python</li><li>GitHub API</li><li>GitHub Actions</li><li>AWS</li></ul>
       </article>
       <article class="mini">
         <span class="kicker">Editor tooling</span>
@@ -487,7 +572,7 @@ spec:
         <span class="kicker">Supply-chain security</span>
         <h4>Supply Chain Guard</h4>
         <p>A reusable CI workflow that runs SAST and dependency scans, generates an SBOM, signs images, and promotes packages in Artifactory only when every check passes. Teams adopt it with one line in their pipeline.</p>
-        <ul class="techs"><li>GitLab CI</li><li>GitHub Actions</li><li>SAST</li><li>SBOM</li><li>Artifactory</li></ul>
+        <ul class="techs"><li>GitHub Actions</li><li>Argo CD</li><li>SAST</li><li>SBOM</li><li>Artifactory</li></ul>
       </article>
       <article class="mini">
         <span class="kicker">Infrastructure as code</span>
